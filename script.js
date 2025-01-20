@@ -6,6 +6,7 @@ async function GetAllPosts() {
       return posts;
     } catch (error) {
       console.error('Error fetching posts:', error);
+      return [];
     }
   }
   
@@ -98,10 +99,13 @@ async function GetAllPosts() {
   }
   
 
-console.log(await GetAllPosts())
-console.log(await GetPostById(3))
-console.log(await CreatePost())
-console.log(await UpdatePost(4))
-console.log(await PatchPost(10))
-console.log(await DeletePost(100))
-  
+async function run() {
+  console.log(await GetAllPosts());
+  console.log(await GetPostById(3));
+  console.log(await CreatePost({userId: 2, title: 'foo', body: 'bar'}));
+  console.log(await UpdatePost(4));
+  console.log(await PatchPost(10));
+  console.log(await DeletePost(100));
+}
+
+run();
